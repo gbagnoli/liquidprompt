@@ -13,6 +13,8 @@
 # LP_PWD current working directory
 # LP_PROXY HTTP proxy
 # LP_VCS the content of the current repository
+# LP_VENV the current python virtualenv
+# LP_RVM the current ruby virtualenv
 # LP_ERR last error code
 # LP_MARK prompt mark
 # LP_TIME current time
@@ -31,12 +33,12 @@ LP_PS1="${LP_PS1}[${LP_USER}${LP_HOST}${LP_PERM}"
 if [[ "$EUID" -ne "0" ]]
 then
     # path in foreground color
-    LP_PS1="${LP_PS1}${LP_PWD}]${LP_VENV}${LP_PROXY}"
+    LP_PS1="${LP_PS1}${LP_PWD}]${LP_VENV}${LP_RVM}${LP_PROXY}"
     # add VCS infos
     LP_PS1="${LP_PS1}${LP_VCS}"
 else
     # path in yellow
-    LP_PS1="${LP_PS1}${LP_PWD}]${LP_VENV}${LP_PROXY}"
+    LP_PS1="${LP_PS1}${LP_PWD}]${LP_VENV}${LP_RVM}${LP_PROXY}"
     # do not add VCS infos unless told otherwise (LP_ENABLE_VCS_ROOT)
     [[ "$LP_ENABLE_VCS_ROOT" = "1" ]] && LP_PS1="${LP_PS1}${LP_VCS}"
 fi
